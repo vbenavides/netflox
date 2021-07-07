@@ -7,9 +7,15 @@ const StyledHeader = styled.header`
   display: flex;
   justify-content: center;
   align-items: center;
+  position: fixed;
+  top: 0;
   width: 100%;
   height: 60px;
   padding: 0 4%;
+
+  :hover {
+    background-color: black;
+  }
 `;
 
 const StyledNav = styled.nav`
@@ -29,7 +35,7 @@ const StyledLinks = styled.div`
     margin: 0;
     padding: 0;
     list-style: none;
-    border: 1px red solid;
+    /* border: 1px red solid; */
 
     li {
       margin: 0;

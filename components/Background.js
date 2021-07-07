@@ -8,6 +8,7 @@ const StyledBackground = styled.div`
   left: 0;
   width: 100%;
   height: 195%;
+  z-index: -20;
 
   @media (max-width: 425px) {
     height: 100%;

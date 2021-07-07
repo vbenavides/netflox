@@ -20,7 +20,7 @@ const Layout = (props) => {
       <StyledContent>
         <Nav />
         {props.children}
-        <Footer />
+        {/* <Footer /> */}
       </StyledContent>
     </React.Fragment>
   );

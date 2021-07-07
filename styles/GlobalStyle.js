@@ -1,8 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
 import variables from './Variables';
-// import bgImg from '../components/content/bg.jpg';
-
-const bgImg = '../components/content/bg.jpg';
 
 const GlobalStyle = createGlobalStyle`
   ${variables}
@@ -22,8 +19,6 @@ const GlobalStyle = createGlobalStyle`
     margin: 0;
     width: 100%;
     min-height: 100%;
-    ${'' /* background-image: url(${bgImg}); */}
-    background-color: var(--dark-bg);
     color: var(--white-font);
   }
 
@@ -34,7 +29,6 @@ const GlobalStyle = createGlobalStyle`
   main {
     margin: 0 auto;
     width: 100%;
-    background-image: url(${bgImg});
 
   }
 

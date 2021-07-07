@@ -4,8 +4,8 @@ const variables = css`
   :root {
     --dark-bg: #000000;
     --white-font: #ffffff;
-
-    ${'' /* --bg-img: url('../') */}
+    --font-arial: Arial, Helvetica, sans-serif;
+    --purple-color-bt: #8400ff;
   }
 `;
 
