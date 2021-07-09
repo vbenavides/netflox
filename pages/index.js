@@ -48,13 +48,6 @@ const Home = () => {
       const promises = categoryList.map(async (category) => {
         return await fetchDiscoverMovie(category.id);
       });
-
-      // const data = await fetchGenre();
-      // const randomNum = (min = 0, max = 10) =>
-      //   Math.floor(Math.random() * (max - min) + min);
-      // const promises = data.map(async (category) => {
-      //   return await fetchDiscoverMovie(randomNum());
-      // });
       const result = await Promise.all(promises);
       const dataa = result.forEach((array) => {
         return array[1];
@@ -74,12 +67,7 @@ const Home = () => {
     };
 
     fetchAPI();
-    // fetchCateryData(categoryList);
   }, []);
-
-  // console.log(categoryList);
-  console.log(categoryData);
-  // console.log(moviesPopular);
 
   return (
     <Layout>

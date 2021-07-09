@@ -12,21 +12,14 @@ const StyledCategory = styled.section`
   background-color: black;
   margin: 0;
 `;
-const ToyStory2 = require('../content/category/toy-story.jpg');
 
 const StyledCardContainer = styled.div`
   position: relative;
   display: grid;
   grid-template-columns: repeat(4, minmax(200px, 1fr));
   grid-gap: 30px;
-  /* justify-content: space-between; */
   overflow: hidden;
   justify-content: center;
-
-  /* display: grid; */
-  /* margin: 0 7%;
-  padding: 20px 0;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); */
 
   @media (max-width: 1024px) {
     grid-template-columns: repeat(2, minmax(200px, 1fr));
@@ -40,7 +33,6 @@ const StyledCardContainer = styled.div`
 `;
 
 const StyledCard = styled.div`
-  /* border: 1px solid gray; */
   display: flex;
   position: relative;
   flex-direction: column;
@@ -49,7 +41,6 @@ const StyledCard = styled.div`
   position: relative;
   border-radius: 20px;
   height: 200px;
-  /* border: 1px solid red; */
   z-index: 5;
   cursor: pointer;
   margin: 0;
@@ -78,12 +69,7 @@ const StyledCard = styled.div`
   }
 `;
 
-const Category = ({ categoryList }) => {
-  // let toyStoryImg = () => document.querySelector('toyStoryImg');
-  // toyStoryImg.addEventListener('mouseover', () => {
-  //   toyStoryImg.src = { ToyStoryGif };
-  // });
-
+const Category = () => {
   return (
     // ***INTENTÉ HACERLO DINAMICO CON UNA CONSULTA A LA API Y COMBINAR EL RESULTADO DEL ARRAY Y MOSTRARLO CON UN MAP, LASTIMOSAMENTE NO ME SALIÓ :'V ***************
     //***************************************************** */
@@ -103,14 +89,12 @@ const Category = ({ categoryList }) => {
     <StyledCategory>
       <StyledCardContainer>
         <StyledCard>
-          {/* <img className='img-category' src={ToyStory2} alt='' /> */}
           <Image
             className='img-category toyStoryImg'
             src={ToyStory}
             layout='fill'
             alt='anillo'
             quality={100}
-            // object-fit='cover'
           />
           <h4>Animation</h4>
           <p>52 Titles</p>

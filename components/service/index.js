@@ -31,7 +31,6 @@ export const fetchMoviesList = async () => {
       overview: m['overview'],
       rating: m['vote_average'],
     }));
-    // console.log(modifiedData);
 
     return modifiedData;
   } catch (error) {}
@@ -123,7 +122,6 @@ export const fetchDiscoverMovie = async (gener) => {
       params: {
         api_key: apiKey,
         language: 'en_US',
-        // page: 1,
         with_genres: gener,
       },
     });
@@ -136,7 +134,6 @@ export const fetchDiscoverMovie = async (gener) => {
       category: m['genre_ids'],
       poster: posterUrl + m['poster_path'],
     }));
-    // console.log(data);
     return modifiedData;
   } catch (error) {}
 };

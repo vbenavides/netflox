@@ -72,7 +72,6 @@ const StyledInfoWrapper = styled.div`
     z-index: 10;
     overflow: hidden;
     margin: auto 3% auto 0;
-    /* border: 2px solid rgba(133, 133, 133, 0.2); */
     border: 1px solid grey;
     border-radius: 10px;
   }
@@ -91,7 +90,6 @@ const StyledInfoWrapper = styled.div`
   }
 
   p {
-    /* margin: 6% 0; */
     font-size: 14px;
     font-family: var(--font-arial);
   }
@@ -130,10 +128,8 @@ const StyledButtons = styled.div`
     font-weight: bold;
     width: 30%;
     height: 30px;
-    /* height: 105%; */
     border-radius: 50px;
     border: none;
-    /* text-justify: initial; */
     padding: 0 4%;
     text-align: start;
 
@@ -149,16 +145,11 @@ const MovieDetail = ({ videoItem, moviesVideos, isOnScreen, backToList }) => {
   var isVisible = isOnScreen ? 0 : -300;
   var helpder = isOnScreen ? 'block' : 'none';
 
-  // const [isOnScreen, setIsOnScreen] = useState(false);
   const videoOnReady = (event) => {
-    // access to player in all event handlers via event.target
     event.target.playVideo();
   };
   const videoID = moviesVideos ? moviesVideos.key : null;
-  // console.log(videoItem);
-  // console.log(moviesVideos);
 
-  // 2fuowcxdrYc
   const opts = {
     height: '300',
     width: '500',
@@ -171,8 +162,6 @@ const MovieDetail = ({ videoItem, moviesVideos, isOnScreen, backToList }) => {
       loop: 1,
     },
   };
-  // var getElement = document.getElementsByClassName('videoContainer');
-  // console.log(document.activeElement);
 
   return (
     <StyledContainer style={{ bottom: isVisible }}>

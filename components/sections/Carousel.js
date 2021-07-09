@@ -1,8 +1,6 @@
 import React, { useRef, useState } from 'react';
 import Image from 'next/image';
 import styled from 'styled-components';
-// import { ArrowBackIosIcon } from '@material-ui/icons';
-// import ArrowBackIosIcon from '@material-ui/icons';
 import ArrowLeftIcon from '@material-ui/icons/ArrowLeft';
 import ArrowRightIcon from '@material-ui/icons/ArrowRight';
 
@@ -10,12 +8,8 @@ const StyledList = styled.section`
   width: 100%;
   position: relative;
   background-color: var(--dark-bg);
-  /* margin: 0; */
   overflow: hidden;
   padding-top: 15px;
-  /* padding: 20px 0; */
-
-  /* overflow: scroll; */
   transition: all 1s ease;
 
   span {
@@ -25,12 +19,12 @@ const StyledList = styled.section`
   }
   .sliderArrow {
     width: 50px;
-    height: 100%;
+    height: 270px;
     background-color: rgb(22, 22, 22, 0.5);
     color: white;
     position: absolute;
     cursor: pointer;
-    top: 0;
+    top: 24px;
     bottom: 0;
     margin: auto;
     transition: all 1s ease;
@@ -47,10 +41,7 @@ const StyledList = styled.section`
 `;
 
 const StyledCarouselContainer = styled.div`
-  /* display: flex; */
-  /* width: max-content; */
   position: relative;
-
   transition: 450ms -webkit-transform;
   transition: 450ms transform;
   transition: 450ms transform, 450ms -webkit-transform;
@@ -59,14 +50,10 @@ const StyledCarouselContainer = styled.div`
   transition: 450ms opacity;
   padding: 20px 0;
 
-  :hover .styled-card {
-    /* opacity: 0.3; */
-  }
   :hover .styled-card:hover {
     -webkit-transform: scale(1.2);
     transform: scale(1.2);
     opacity: 1;
-    /* z-index: 10; */
   }
 `;
 
@@ -82,14 +69,7 @@ const StyledCard = styled.div`
   margin-right: 15px;
   border-radius: 5px;
   overflow: hidden;
-
-  /* border-radius: 20px; */
-  /* overflow: hidden; */
-  /* position: relative; */
   display: inline-block;
-  /* width: 200px; */
-  /* height: 250px; */
-  /* margin-right: 10px; */
   font-size: 20px;
   cursor: pointer;
   transition: 450ms all;
@@ -106,15 +86,11 @@ const StyledCard = styled.div`
 
     .info {
       display: flex;
-      /* -webkit-transform: translate3d(100px, 0, 0);
-    transform: translate3d(100px, 0, 0); */
     }
   }
   .imgCard {
-    /* position: relative; */
     width: 100%;
     object-fit: cover;
-    /* z-index: 20; */
     overflow: hidden;
   }
 `;
@@ -123,23 +99,17 @@ const StyledInfo = styled.div`
   display: none;
   flex-direction: column;
   align-items: center;
-  /* align-items: center; */
   justify-content: flex-end;
   width: 100%;
   height: 100%;
   position: absolute;
-  /* color: transparent; */
   bottom: 0;
   left: 0;
   background: rgb(0, 0, 0);
   background: linear-gradient(0deg, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 100%);
   z-index: 25;
-
   font-size: 10px;
-  /* opacity: 0; */
   transition: 450ms opacity;
-  /* padding: 10px;
-  top: 0; */
 
   h5 {
     color: transparent;
@@ -214,17 +184,11 @@ const StyledInfo = styled.div`
       box-shadow: inset 80% 0 0 0 white;
     }
   }
-
-  /* transition: all 0.5s; */
 `;
 
 const Carousel = ({ dataMovies, sliderName, handlerClickVideo }) => {
-  // console.log(dataMovie);
-
-  // const internalData = dataaa.slice(0, 5);
   const handleClick = (item) => {
     handlerClickVideo(item);
-    // document.getElementsByTagName('html')[0].style.overflow = 'hidden';
 
     function disableScroll() {
       var x = window.scrollX;
@@ -234,13 +198,6 @@ const Carousel = ({ dataMovies, sliderName, handlerClickVideo }) => {
       };
     }
     disableScroll();
-
-    // handleFocus();
-    // console.log(item);
-
-    // function enableScroll() {
-    //   window.onscroll = null;
-    // }
   };
 
   const [slideNumber, setSlideNumber] = useState(0);
@@ -252,18 +209,13 @@ const Carousel = ({ dataMovies, sliderName, handlerClickVideo }) => {
     setIsMoved(true);
     let distance = listRef.current.getBoundingClientRect().x - 35;
     if (direction === 'left' && slideNumber > 0) {
-      // if (direction === 'left') {
       setSlideNumber(slideNumber - 1);
       listRef.current.style.transform = `translateX(${168 + distance}px)`;
-      console.log(slideNumber);
-      // console.log(distance);
     }
     if (direction === 'right' && slideNumber < 16) {
       setSlideNumber(slideNumber + 1);
       listRef.current.style.transform = `translateX(${-168 + distance}px)`;
-      console.log(slideNumber);
     }
-    console.log(distance);
   };
 
   return (
@@ -275,7 +227,6 @@ const Carousel = ({ dataMovies, sliderName, handlerClickVideo }) => {
         style={{ display: !isMoved && 'none' }}
       />
       <StyledCarouselContainer ref={listRef}>
-        {/* dataMovies.slice(0, 9).map((item, i) => ( */}
         {dataMovies &&
           dataMovies.map((item, i) => (
             <StyledCard

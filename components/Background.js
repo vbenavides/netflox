@@ -19,16 +19,7 @@ const StyledBackground = styled.div`
   }
 
   .bgStyle {
-    /* position: fixed; */
-    /* margin-top: 50px; */
-    /* position: fixed;
-    top: 100px;
-    left: 0;
-    width: 100%;
-    height: 100%; */
-    /* height: 100%; */
     object-fit: cover;
-    /* height: 100%; */
   }
 `;
 
@@ -39,7 +30,6 @@ const Background = () => (
       alt='bg'
       src={bgImg}
       layout='fill'
-      // objectFit='cover'
       quality={100}
     />
   </StyledBackground>

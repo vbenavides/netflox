@@ -20,6 +20,7 @@ const GlobalStyle = createGlobalStyle`
     width: 100%;
     min-height: 100%;
     color: var(--white-font);
+    font-family: Helvetica, sans-serif;
   }
 
   header {

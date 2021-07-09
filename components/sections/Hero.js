@@ -9,8 +9,6 @@ const StyledHero = styled.section`
   margin: 0;
   width: 100%;
   height: 500px;
-  /* border: 1px solid red; */
-  /* background-color: var(--black-bg) 50%; */
   background: rgb(0, 0, 0);
   background: linear-gradient(0deg, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 100%);
   z-index: 5;
@@ -38,11 +36,9 @@ const StyledHeroCotainer = styled.div`
   justify-content: start;
   align-items: center;
   padding: 0 2%;
-  /* border: 1px solid red; */
 
   h1 {
     font-family: var(--font-arial);
-    /* font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; */
     font-size: 55px;
     font-weight: 900;
     line-height: 90%;
@@ -68,9 +64,13 @@ const StyledButtons = styled.div`
     border-radius: 50px;
     margin-right: 2%;
     border: none;
-    text-justify: initial;
     padding: 0 4%;
-    text-align: start;
+
+    span {
+      display: flex;
+      justify-content: center;
+      width: 100%;
+    }
   }
 
   .list-bt {
@@ -81,17 +81,14 @@ const StyledButtons = styled.div`
     font-weight: bold;
     width: 25%;
     height: 40px;
-    /* height: 105%; */
     border-radius: 50px;
     border: none;
-    /* text-justify: initial; */
     padding: 0 4%;
-    text-align: start;
 
     span {
       display: flex;
-      justify-content: start;
-      text-justify: initial;
+      justify-content: center;
+      width: 100%;
     }
   }
 `;
