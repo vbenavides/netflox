@@ -14,6 +14,9 @@ const StyledHero = styled.section`
   background: rgb(0, 0, 0);
   background: linear-gradient(0deg, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 100%);
   z-index: 5;
+  @media (min-width: 480px) {
+    height: 500px;
+  }
 
   @media (min-width: 1024px) {
     height: 350px;
