@@ -8,7 +8,7 @@ const StyledHero = styled.section`
   align-items: center;
   margin: 0;
   width: 100%;
-  height: 300px;
+  height: 400px;
   /* border: 1px solid red; */
   /* background-color: var(--black-bg) 50%; */
   background: rgb(0, 0, 0);
@@ -16,11 +16,11 @@ const StyledHero = styled.section`
   z-index: 5;
 
   @media (min-width: 1024px) {
-    height: 420px;
+    height: 350px;
   }
 
   @media (min-width: 1440px) {
-    height: 550px;
+    height: 500px;
   }
 
   @media (min-width: 2560px) {

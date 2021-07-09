@@ -17,10 +17,26 @@ const ToyStory2 = require('../content/category/toy-story.jpg');
 const StyledCardContainer = styled.div`
   position: relative;
   display: grid;
-  grid-template-columns: repeat(4, minmax(250px, 350px));
+  grid-template-columns: repeat(4, minmax(200px, 1fr));
   grid-gap: 30px;
-  justify-content: space-between;
+  /* justify-content: space-between; */
   overflow: hidden;
+  justify-content: center;
+
+  /* display: grid; */
+  /* margin: 0 7%;
+  padding: 20px 0;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); */
+
+  @media (max-width: 1024px) {
+    grid-template-columns: repeat(2, minmax(200px, 1fr));
+    grid-gap: 30px;
+  }
+
+  @media (max-width: 480px) {
+    grid-template-columns: repeat(1, minmax(200px, 1fr));
+    grid-gap: 30px;
+  }
 `;
 
 const StyledCard = styled.div`

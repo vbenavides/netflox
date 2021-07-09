@@ -12,9 +12,27 @@ const StyledHeader = styled.header`
   width: 100%;
   height: 60px;
   padding: 0 4%;
+  z-index: 50;
+  /* transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1); */
+  transition: all ease 0.5s;
+  background: rgb(0, 0, 0);
+  background: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 0.5) 0%,
+    rgba(0, 0, 0, 0.5) 100%
+  );
 
   :hover {
+    /* background: rgb(0, 0, 0); */
     background-color: black;
+    /* background: linear-gradient(
+      90deg,
+      rgba(0, 0, 0, 0.5) 0%,
+      rgba(0, 0, 0, 0.5) 100%
+    ); */
+    transition: all ease 0.5s;
+
+    /* transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1); */
   }
 `;
 

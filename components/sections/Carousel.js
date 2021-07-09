@@ -258,7 +258,7 @@ const Carousel = ({ dataMovies, sliderName, handlerClickVideo }) => {
       console.log(slideNumber);
       // console.log(distance);
     }
-    if (direction === 'right' && slideNumber < 6) {
+    if (direction === 'right' && slideNumber < 16) {
       setSlideNumber(slideNumber + 1);
       listRef.current.style.transform = `translateX(${-168 + distance}px)`;
       console.log(slideNumber);
@@ -275,8 +275,9 @@ const Carousel = ({ dataMovies, sliderName, handlerClickVideo }) => {
         style={{ display: !isMoved && 'none' }}
       />
       <StyledCarouselContainer ref={listRef}>
+        {/* dataMovies.slice(0, 9).map((item, i) => ( */}
         {dataMovies &&
-          dataMovies.slice(0, 9).map((item, i) => (
+          dataMovies.map((item, i) => (
             <StyledCard
               className='styled-card'
               onClick={() => handleClick(item)}
