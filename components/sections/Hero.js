@@ -8,14 +8,15 @@ const StyledHero = styled.section`
   align-items: center;
   margin: 0;
   width: 100%;
-  height: 400px;
+  height: 500px;
   /* border: 1px solid red; */
   /* background-color: var(--black-bg) 50%; */
   background: rgb(0, 0, 0);
   background: linear-gradient(0deg, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 100%);
   z-index: 5;
-  @media (min-width: 480px) {
-    height: 500px;
+
+  @media (min-width: 460px) {
+    height: 400px;
   }
 
   @media (min-width: 1024px) {
