@@ -4,6 +4,7 @@ const apiKey = 'a4999a28333d1147dbac0d104526337a';
 const url = 'https://api.themoviedb.org/3';
 const nowPlayingUrl = `${url}/movie/now_playing`;
 const popularUrl = `${url}/movie/popular`;
+const movieUrl = `${url}/movie`;
 const comingSoonUrl = `${url}/movie/upcoming`;
 
 const genreUrl = `${url}/genre/movie/list`;
@@ -29,7 +30,7 @@ export const fetchMoviesList = async () => {
       overview: m['overview'],
       rating: m['vote_average'],
     }));
-    console.log(modifiedData);
+    // console.log(modifiedData);
 
     return modifiedData;
   } catch (error) {}
@@ -99,5 +100,16 @@ export const fetchGenre = async () => {
       name: g['name'],
     }));
     return modifiedData;
+  } catch (error) {}
+};
+
+export const fetchMovieVideos = async (id) => {
+  try {
+    const { data } = await axios.get(`${movieUrl}/${id}/videos`, {
+      params: {
+        api_key: apiKey,
+      },
+    });
+    return data['results'][0];
   } catch (error) {}
 };

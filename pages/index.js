@@ -3,21 +3,43 @@ import Layout from '../components/Layout';
 import Hero from '../components/sections/Hero';
 import Category from '../components/sections/Category';
 import Carousel from '../components/sections/Carousel';
+import MovieDetail from '../components/sections/MovieDetail';
 import {
   fetchMoviesList,
   fetchMoviesPopular,
   fetchMoviesComingSoon,
   fetchGenre,
+  fetchMovieVideos,
 } from '../components/service/index';
-// const StyledMainContainer = styled.main`
+import styled from 'styled-components';
 
-// `
+const StyledMainContainer = styled.main`
+  position: relative;
+`;
 
 const Home = () => {
   const [categoryList, setCategoryList] = useState([]);
   const [moviesList, setMoviesList] = useState([]);
   const [moviesPopular, setMoviesPopular] = useState([]);
   const [moviesComing, setMoviesComing] = useState([]);
+  const [moviesVideos, setMoviesVideos] = useState([]);
+  const [videoItem, setVideoItem] = useState('');
+  const [isOnScreen, setIsOnScreen] = useState(false);
+
+  const handlerClickVideo = async (item) => {
+    setVideoItem(item);
+    setMoviesVideos(await fetchMovieVideos(item.id));
+    setIsOnScreen(true);
+  };
+
+  const backToList = () => {
+    setMoviesVideos(null);
+    setIsOnScreen(false);
+    function enableScroll() {
+      window.onscroll = null;
+    }
+    enableScroll();
+  };
 
   useEffect(() => {
     const fetchAPI = async () => {
@@ -28,20 +50,35 @@ const Home = () => {
     };
 
     fetchAPI();
-    // console.log(categoryList);
   }, []);
-
-  // console.log(moviesList);
 
   return (
     <Layout>
-      <main>
+      <StyledMainContainer>
         <Hero />
         <Category categoryList={categoryList} />
-        <Carousel sliderName={'My List'} dataMovies={moviesList} />
-        <Carousel sliderName={'Popular'} dataMovies={moviesPopular} />
-        <Carousel sliderName={'Comming Soon'} dataMovies={moviesComing} />
-      </main>
+        <Carousel
+          handlerClickVideo={handlerClickVideo}
+          sliderName={'My List'}
+          dataMovies={moviesList}
+        />
+        <Carousel
+          handlerClickVideo={handlerClickVideo}
+          sliderName={'Popular'}
+          dataMovies={moviesPopular}
+        />
+        <Carousel
+          handlerClickVideo={handlerClickVideo}
+          sliderName={'Comming Soon'}
+          dataMovies={moviesComing}
+        />
+        <MovieDetail
+          isOnScreen={isOnScreen}
+          videoItem={videoItem}
+          moviesVideos={moviesVideos}
+          backToList={backToList}
+        />
+      </StyledMainContainer>
     </Layout>
   );
 };

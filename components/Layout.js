@@ -17,7 +17,7 @@ const Layout = (props) => {
     <React.Fragment>
       <GlobalStyle />
       <Background />
-      <StyledContent>
+      <StyledContent className='container'>
         <Nav />
         {props.children}
         {/* <Footer /> */}
