@@ -4,6 +4,7 @@ const apiKey = 'a4999a28333d1147dbac0d104526337a';
 const url = 'https://api.themoviedb.org/3';
 const nowPlayingUrl = `${url}/movie/now_playing`;
 const popularUrl = `${url}/movie/popular`;
+const discoverUrl = `${url}/movie/popular`;
 const movieUrl = `${url}/movie`;
 const comingSoonUrl = `${url}/movie/upcoming`;
 
@@ -52,6 +53,7 @@ export const fetchMoviesPopular = async () => {
       backPoster: posterUrl + m['backdrop_path'],
       popularity: m['popularith'],
       title: m['title'],
+      category: m['genre_ids'],
       poster: posterUrl + m['poster_path'],
       overview: m['overview'],
       rating: m['vote_average'],
@@ -77,6 +79,7 @@ export const fetchMoviesComingSoon = async () => {
       backPoster: posterUrl + m['backdrop_path'],
       popularity: m['popularith'],
       title: m['title'],
+      category: m['genre_ids'],
       poster: posterUrl + m['poster_path'],
       overview: m['overview'],
       rating: m['vote_average'],
@@ -113,3 +116,32 @@ export const fetchMovieVideos = async (id) => {
     return data['results'][0];
   } catch (error) {}
 };
+
+export const fetchDiscoverMovie = async () => {
+  try {
+    const { data } = await axios.get(discoverUrl, {
+      params: {
+        api_key: apiKey,
+        language: 'en_US',
+        // page: 1,
+        with_genres: 27,
+      },
+    });
+
+    const posterUrl = 'https://image.tmdb.org/t/p/original/';
+    const modifiedData = data['results'].map((m) => ({
+      id: m['id'],
+      backPoster: posterUrl + m['backdrop_path'],
+      popularity: m['popularith'],
+      title: m['title'],
+      category: m['genre_ids'],
+      poster: posterUrl + m['poster_path'],
+      overview: m['overview'],
+      rating: m['vote_average'],
+    }));
+    console.log(data);
+    return data;
+  } catch (error) {}
+};
+
+fetchDiscoverMovie();

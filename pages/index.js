@@ -52,6 +52,9 @@ const Home = () => {
     fetchAPI();
   }, []);
 
+  console.log(categoryList);
+  console.log(moviesComing);
+
   return (
     <Layout>
       <StyledMainContainer>
