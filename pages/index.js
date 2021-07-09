@@ -10,6 +10,7 @@ import {
   fetchMoviesComingSoon,
   fetchGenre,
   fetchMovieVideos,
+  fetchDiscoverMovie,
 } from '../components/service/index';
 import styled from 'styled-components';
 
@@ -25,6 +26,7 @@ const Home = () => {
   const [moviesVideos, setMoviesVideos] = useState([]);
   const [videoItem, setVideoItem] = useState('');
   const [isOnScreen, setIsOnScreen] = useState(false);
+  const [categoryData, setCategoryData] = useState([]);
 
   const handlerClickVideo = async (item) => {
     setVideoItem(item);
@@ -41,25 +43,53 @@ const Home = () => {
     enableScroll();
   };
 
+  const fetchCateryData = async (categoryList) => {
+    try {
+      const promises = categoryList.map(async (category) => {
+        return await fetchDiscoverMovie(category.id);
+      });
+
+      // const data = await fetchGenre();
+      // const randomNum = (min = 0, max = 10) =>
+      //   Math.floor(Math.random() * (max - min) + min);
+      // const promises = data.map(async (category) => {
+      //   return await fetchDiscoverMovie(randomNum());
+      // });
+      const result = await Promise.all(promises);
+      const dataa = result.forEach((array) => {
+        return array[1];
+      });
+      console.log(dataa);
+      return dataa;
+    } catch (err) {}
+  };
+
   useEffect(() => {
     const fetchAPI = async () => {
       setCategoryList(await fetchGenre());
       setMoviesList(await fetchMoviesList());
       setMoviesPopular(await fetchMoviesPopular());
       setMoviesComing(await fetchMoviesComingSoon());
+      setCategoryData(await fetchCateryData(categoryList));
     };
 
     fetchAPI();
+    // fetchCateryData(categoryList);
   }, []);
 
-  console.log(categoryList);
-  console.log(moviesComing);
+  // console.log(categoryList);
+  console.log(categoryData);
+  // console.log(moviesPopular);
 
   return (
     <Layout>
       <StyledMainContainer>
         <Hero />
-        <Category categoryList={categoryList} />
+        <Category
+          moviesList={moviesList}
+          categoryData={categoryData}
+          categoryList={categoryList}
+        />
         <Carousel
           handlerClickVideo={handlerClickVideo}
           sliderName={'My List'}

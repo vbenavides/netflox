@@ -12,6 +12,7 @@ const StyledContainer = styled.section`
   justify-content: space-between;
   overflow: hidden;
   transition: all 0.5s;
+  z-index: 10;
 
   .videoContainer {
     display: flex;
@@ -64,7 +65,7 @@ const StyledInfoWrapper = styled.div`
     width: 170px;
     height: 270px;
     object-fit: cover;
-    z-index: 0;
+    z-index: 10;
     overflow: hidden;
     margin: auto 3% auto 0;
     /* border: 2px solid rgba(133, 133, 133, 0.2); */

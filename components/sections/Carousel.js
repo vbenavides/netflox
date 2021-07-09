@@ -1,6 +1,10 @@
-import React from 'react';
+import React, { useRef, useState } from 'react';
 import Image from 'next/image';
 import styled from 'styled-components';
+// import { ArrowBackIosIcon } from '@material-ui/icons';
+// import ArrowBackIosIcon from '@material-ui/icons';
+import ArrowLeftIcon from '@material-ui/icons/ArrowLeft';
+import ArrowRightIcon from '@material-ui/icons/ArrowRight';
 
 const StyledList = styled.section`
   width: 100%;
@@ -12,18 +16,40 @@ const StyledList = styled.section`
   /* padding: 20px 0; */
 
   /* overflow: scroll; */
+  transition: all 1s ease;
 
   span {
     color: white;
     font-size: 20px;
     font-weight: 500;
   }
+  .sliderArrow {
+    width: 50px;
+    height: 100%;
+    background-color: rgb(22, 22, 22, 0.5);
+    color: white;
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    transition: all 1s ease;
+
+    &.left {
+      left: 3.2%;
+      z-index: 1;
+    }
+
+    &.right {
+      right: 3.2%;
+    }
+  }
 `;
 
 const StyledCarouselContainer = styled.div`
   /* display: flex; */
   /* width: max-content; */
-  /* position: relative; */
+  position: relative;
 
   transition: 450ms -webkit-transform;
   transition: 450ms transform;
@@ -217,10 +243,38 @@ const Carousel = ({ dataMovies, sliderName, handlerClickVideo }) => {
     // }
   };
 
+  const [slideNumber, setSlideNumber] = useState(0);
+  const [isMoved, setIsMoved] = useState(false);
+
+  const listRef = useRef();
+
+  const handleClickArrow = (direction) => {
+    setIsMoved(true);
+    let distance = listRef.current.getBoundingClientRect().x - 35;
+    if (direction === 'left' && slideNumber > 0) {
+      // if (direction === 'left') {
+      setSlideNumber(slideNumber - 1);
+      listRef.current.style.transform = `translateX(${168 + distance}px)`;
+      console.log(slideNumber);
+      // console.log(distance);
+    }
+    if (direction === 'right' && slideNumber < 6) {
+      setSlideNumber(slideNumber + 1);
+      listRef.current.style.transform = `translateX(${-168 + distance}px)`;
+      console.log(slideNumber);
+    }
+    console.log(distance);
+  };
+
   return (
     <StyledList>
       <span>{sliderName}</span>
-      <StyledCarouselContainer>
+      <ArrowLeftIcon
+        className='sliderArrow left'
+        onClick={() => handleClickArrow('left')}
+        style={{ display: !isMoved && 'none' }}
+      />
+      <StyledCarouselContainer ref={listRef}>
         {dataMovies &&
           dataMovies.slice(0, 9).map((item, i) => (
             <StyledCard
@@ -237,6 +291,10 @@ const Carousel = ({ dataMovies, sliderName, handlerClickVideo }) => {
             </StyledCard>
           ))}
       </StyledCarouselContainer>
+      <ArrowRightIcon
+        className='sliderArrow right'
+        onClick={() => handleClickArrow('right')}
+      />
     </StyledList>
   );
 };

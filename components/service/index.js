@@ -117,14 +117,14 @@ export const fetchMovieVideos = async (id) => {
   } catch (error) {}
 };
 
-export const fetchDiscoverMovie = async () => {
+export const fetchDiscoverMovie = async (gener) => {
   try {
     const { data } = await axios.get(discoverUrl, {
       params: {
         api_key: apiKey,
         language: 'en_US',
         // page: 1,
-        with_genres: 27,
+        with_genres: gener,
       },
     });
 
@@ -132,16 +132,11 @@ export const fetchDiscoverMovie = async () => {
     const modifiedData = data['results'].map((m) => ({
       id: m['id'],
       backPoster: posterUrl + m['backdrop_path'],
-      popularity: m['popularith'],
       title: m['title'],
       category: m['genre_ids'],
       poster: posterUrl + m['poster_path'],
-      overview: m['overview'],
-      rating: m['vote_average'],
     }));
-    console.log(data);
-    return data;
+    // console.log(data);
+    return modifiedData;
   } catch (error) {}
 };
-
-fetchDiscoverMovie();
