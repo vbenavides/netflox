@@ -29,6 +29,10 @@ const StyledContainer = styled.section`
     flex-direction: row;
     justify-content: flex-end;
     z-index: 30;
+
+    @media (max-width: 480px) {
+      width: 100%;
+    }
   }
 
   .helper {
@@ -90,6 +94,10 @@ const StyledInfoWrapper = styled.div`
     /* margin: 6% 0; */
     font-size: 14px;
     font-family: var(--font-arial);
+  }
+
+  @media (max-width: 480px) {
+    display: none;
   }
 `;
 
